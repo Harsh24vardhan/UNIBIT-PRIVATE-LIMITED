@@ -10,7 +10,7 @@ public class CombinationFinder {
         Map<Integer, Integer> map = new HashMap<>();
         List<Integer> mergedArray = new ArrayList<>();
 
-        // Step 1: Find pairs that sum up to the target
+        //  Find pairs that sum up to the target
         for (int num : nums) {
             int complement = target - num;
             if (map.containsKey(complement)) {
@@ -19,7 +19,7 @@ public class CombinationFinder {
             map.put(num, map.getOrDefault(num, 0) + 1);
         }
 
-        // Step 2: Merge into a single array and sort
+        // Merge into a single array and sort
         for (int[] pair : combinations) {
             mergedArray.add(pair[0]);
             mergedArray.add(pair[1]);
@@ -27,10 +27,10 @@ public class CombinationFinder {
         int[] mergedArraySorted = mergedArray.stream().mapToInt(Integer::intValue).toArray();
         Arrays.sort(mergedArraySorted);
 
-        // Step 3: Double the target value
+        // Double the target value
         target *= 2;
 
-        // Step 4: Find combinations equal to the doubled target value
+        //  Find combinations equal to the doubled target value
         List<int[]> secondCombinations = new ArrayList<>();
         map.clear();
         for (int num : mergedArraySorted) {
